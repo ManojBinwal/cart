@@ -11,6 +11,19 @@ class CartItem extends React.Component {
 
     }
   }
+
+// testing () {
+//   const promise = new Promise ((resolve, reject) => {
+//     setTimeout(()=> resolve('done'),5000 );
+//   } )
+//   promise.then(() => {
+//     this.state({qty: this.state.qty + 10});
+//     this.state({qty: this.state.qty + 10});
+//     this.state({qty: this.state.qty + 10});
+//     console.log('state', this.state);
+// })
+// }
+
 increaseQuantity = () => {
   //this.state.qty += 1;   (this method wont' work since it doesn't notifies react that change is made);
   //set state method 1 - Shallow Merging//
@@ -38,8 +51,8 @@ decreaseQuantity = () => {
   })
 }
 
-delteItem = () => {
-  this.setState( { qty: this.state.qty = 0 } )
+deleteItem = () => {
+  this.setState({ qty: this.state.qty = 0 })
 }
 
   render () {
@@ -69,7 +82,7 @@ delteItem = () => {
             alt="delete" 
             className='action-icons' 
             src = "https://cdn-icons-png.flaticon.com/128/484/484662.png" 
-            onClick={this.delteItem}
+            onClick={this.deleteItem}
             />
           </div>
         </div>

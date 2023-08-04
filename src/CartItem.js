@@ -11,6 +11,37 @@ class CartItem extends React.Component {
 
     }
   }
+increaseQuantity = () => {
+  //this.state.qty += 1;   (this method wont' work since it doesn't notifies react that change is made);
+  //set state method 1 - Shallow Merging//
+    // this.setState( {
+    //   qty: this.state.qty + 1
+    // })
+
+    //setState form 2 -   //
+    this.setState((prevState) =>{
+      return {
+        qty : prevState.qty+1 
+      }
+    })
+}
+
+// decreaseQuantity = () => {
+//   this.setState( { qty: this.state.qty -1 } )
+// }
+
+decreaseQuantity = () => {
+  this.setState((prevState) => {
+    return {
+      qty: prevState.qty -1
+    }
+  })
+}
+
+delteItem = () => {
+  this.setState( { qty: this.state.qty = 0 } )
+}
+
   render () {
     const {price, title, qty} = this.state;   //object destructuring - give me item from object here //
     return (
@@ -24,9 +55,22 @@ class CartItem extends React.Component {
           <div style={ { color: '#777' } }>Qty: {qty}</div>
           <div className="cart-item-actions">
             {/* Buttons */}
-            <img alt="icrease" className='action-icons' src = "https://cdn-icons-png.flaticon.com/128/992/992651.png" />
-            <img alt="decrease" className='action-icons' src = "https://cdn-icons-png.flaticon.com/128/992/992683.png" />
-            <img alt="delete" className='action-icons' src = "https://cdn-icons-png.flaticon.com/128/484/484662.png" />
+            <img alt="icrease" 
+            className='action-icons' 
+            src = "https://cdn-icons-png.flaticon.com/128/992/992651.png" 
+            onClick={this.increaseQuantity}
+            />
+            <img alt="decrease" 
+            className='action-icons' 
+            src = "https://cdn-icons-png.flaticon.com/128/992/992683.png" 
+            onClick={this.decreaseQuantity}
+            />
+            <img 
+            alt="delete" 
+            className='action-icons' 
+            src = "https://cdn-icons-png.flaticon.com/128/484/484662.png" 
+            onClick={this.delteItem}
+            />
           </div>
         </div>
       </div>
